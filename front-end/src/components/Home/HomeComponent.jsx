@@ -9,6 +9,7 @@ import {
   StyledError,
 } from "./__HomeStyled";
 import useUrl from "../../hook/useUrl";
+import Loader from "../loader/Loader";
 
 const HomeComponent = () => {
   const [url, setUrl] = useState("");
@@ -30,7 +31,15 @@ const HomeComponent = () => {
             onChange={(event) => setUrl(event.target.value)}
           />
           {haveError && <StyledError>{errorMessage}</StyledError>}
-          <Button type="submit">Get Short Link</Button>
+          <Button type="submit">
+            {haveError ? (
+              <>
+                generating <Loader />
+              </>
+            ) : (
+              "Get Short Link "
+            )}
+          </Button>
         </FormGroup>
       </Form>
     </div>
