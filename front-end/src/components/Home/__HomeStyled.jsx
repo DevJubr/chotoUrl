@@ -28,6 +28,10 @@ export const StyledH1 = styled.h1`
   }
 `;
 
+export const StyledError = styled.span`
+  color: red;
+  opacity: 0.8;
+`;
 export const StyledHeader = styled.header`
   width: 100%;
   display: flex;

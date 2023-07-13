@@ -1,6 +1,5 @@
-import { Router } from "express";
-import urlController from "../controllers/urlController";
+const router = require("express").Router();
+const urlController = require("../controllers/urlController.js");
 
-export const route = Router();
-
-route.post("/api/v1/url", urlController);
+router.post("/url", urlController);
+module.exports = router;

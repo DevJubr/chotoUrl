@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-export const dbConnection = () => {
+module.exports = dbConnection = () => {
   try {
     mongoose.connect("mongodb+srv://dar:dar@cluster1.a56rvau.mongodb.net/");
   } catch (error) {

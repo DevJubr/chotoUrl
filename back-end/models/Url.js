@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+const { Schema, model } = require("mongoose");
 const urlSchema = new Schema(
   {
     longUrl: {
@@ -21,4 +21,4 @@ const urlSchema = new Schema(
   }
 );
 const model = model("Urls", urlSchema);
-export default model;
+module.exports = model;
