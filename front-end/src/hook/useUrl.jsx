@@ -1,23 +1,28 @@
+import axios from "axios";
+
 const useUrl = ({ setErrorMessage, setHaveError, url }) => {
-  console.log(url);
   return {
     hendelSubmit: async (event) => {
       event.preventDefault();
 
       try {
-        const response = await fetch("http://localhost:8000/url", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ url }),
-        });
+        if (!url) {
+          throw new Error("url unavailbe");
+        }
+        const response = await axios.post(
+          "http://localhost:8000/api/v1/url",
+          { url },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
-        if (response.ok) {
+        if (response.status === 200) {
           // Handle successful response here
         } else {
-          const errorText = await response.text();
-          setErrorMessage(errorText);
+          setErrorMessage(response.data);
           setHaveError(true);
         }
       } catch (error) {

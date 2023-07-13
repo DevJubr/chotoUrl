@@ -11,10 +11,10 @@ const urlController = async (req, res) => {
   const newEntry = new Url({
     longUrl: url,
     shortUrl: generate(),
-    history: format(new Date(), "HH:mm:ss - dd/MM/yyyy"),
+    history: [{ createdTime: format(new Date(), "HH:mm:ss - dd/MM/yyyy") }],
   });
   await newEntry.save();
-
+  console.log(newEntry);
   res.status(200).json({ message: newEntry });
 };
 

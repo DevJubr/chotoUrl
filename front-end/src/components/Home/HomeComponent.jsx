@@ -32,7 +32,7 @@ const HomeComponent = () => {
           />
           {haveError && <StyledError>{errorMessage}</StyledError>}
           <Button type="submit">
-            {haveError ? (
+            {!haveError ? (
               <>
                 generating <Loader />
               </>

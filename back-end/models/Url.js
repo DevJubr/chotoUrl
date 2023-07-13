@@ -12,7 +12,7 @@ const urlSchema = new Schema(
     },
     history: [
       {
-        createdTime: Number,
+        createdTime: String,
       },
     ],
   },
@@ -20,5 +20,5 @@ const urlSchema = new Schema(
     timestamps: true,
   }
 );
-const model = model("Urls", urlSchema);
-module.exports = model;
+const Url = model("Urls", urlSchema);
+module.exports = Url;
