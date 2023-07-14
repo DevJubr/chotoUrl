@@ -1,7 +1,6 @@
 const Url = require("../models/Url");
 
 const updateUrlController = async (req, res) => {
-  console.log(req.body);
   const { updatedUrl, _id } = req.body;
 
   if (!updatedUrl && !_id) {

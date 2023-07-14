@@ -63,7 +63,6 @@ const useUrl = ({
         setRespons(null);
         setIscopyed(true);
       }
-      console.log(e.target.value);
       try {
         await navigator.clipboard.writeText(value);
       } catch (error) {

@@ -2,33 +2,41 @@ import { useEffect, useState } from "react";
 import { StyledH1, StyledHeader } from "../Home/__HomeStyled";
 import { Section } from "./EdPageStyled";
 import Item from "./Item";
+import Loader from "../loader/Loader";
+import useFetch from "../../hook/useFetch";
 
 const EdPageComponent = () => {
   const [data, setData] = useState(null);
   const [reloadComponent, setreloadComponent] = useState(false);
+  const { fetchData } = useFetch();
 
+  //
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/api/v1/allurls");
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
+    const data = fetchData();
+    data
+      .then((result) => {
+        setData(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [reloadComponent]);
 
+  //
   const hendelReload = () => {
     setreloadComponent(!reloadComponent);
   };
 
+  //
   if (data === null) {
-    // Display loading state while waiting for the data
-    return <div>Loading...</div>;
+    return (
+      <>
+        <Loader />
+        Loading...
+      </>
+    );
   }
+
   return (
     <>
       <StyledHeader>

@@ -31,7 +31,7 @@ const HomeComponent = () => {
     if (Iscopyed) {
       const Timer = setTimeout(() => {
         setIscopyed(false);
-      }, 3000);
+      }, 100);
 
       return () => clearTimeout(Timer);
     }

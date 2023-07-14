@@ -1,15 +1,18 @@
 const Url = require("../models/Url");
 
 const deleteUrlController = async (req, res) => {
-  const { _id } = req.body;
+  try {
+    const urlId = req.params.id;
+    const deletedUrl = await Url.findByIdAndDelete(urlId);
 
-  if (!_id) {
-    res.status(404).json({ message: "{not found _id for delete}" });
+    if (!deletedUrl) {
+      return res.status(404).json({ message: "URL not found" });
+    }
+
+    res.json({ message: "URL deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
-  const deleted = await Url.findByIdAndDelete({ _id });
-  if (!deleted) {
-    res.status(404).json({ message: "{not found id for delete}" });
-  }
-  res.status(204).json({ message: "{deleted successfully}", deleted });
 };
 module.exports = deleteUrlController;

@@ -1,4 +1,3 @@
-import { AiOutlineDelete, AiOutlineEdit, AiOutlineSave } from "react-icons/ai";
 import {
   Article,
   Button,
@@ -10,37 +9,14 @@ import {
   Url,
   UrlContainer,
 } from "./EdPageStyled";
+import { AiOutlineDelete, AiOutlineEdit, AiOutlineSave } from "react-icons/ai";
 import { useState } from "react";
-import axios from "axios";
+import useFetch from "../../hook/useFetch";
 const Item = ({ luri, suri, id, hendelReload }) => {
+  //hooks
   const [editEnable, seteditEnable] = useState(false);
   const [editState, seteditState] = useState(luri);
-  const editHendel = (ev) => {
-    seteditEnable(!editEnable);
-
-    if (ev.target.name === "save") {
-      const hendelUpdate = async (_id, updatedUrl) => {
-        try {
-          const response = await axios.patch(
-            "http://localhost:8000/api/v1/urlupdate",
-            { _id, updatedUrl },
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-          if (response.status === 200) {
-            console.log("update successfully");
-          }
-        } catch (error) {
-          console.log("updated error :", error);
-        }
-      };
-      hendelUpdate(id, editState);
-      hendelReload();
-    }
-  };
+  const { hendelUpdate, editHendel, hendelDelete } = useFetch();
 
   return (
     <Article>
@@ -66,7 +42,17 @@ const Item = ({ luri, suri, id, hendelReload }) => {
       <Buttons>
         <Button
           className="edit"
-          onClick={editHendel}
+          onClick={(ev) =>
+            editHendel(
+              ev,
+              seteditEnable,
+              editEnable,
+              id,
+              editState,
+              hendelReload,
+              hendelUpdate
+            )
+          }
           name={editEnable ? "save" : "edit"}
         >
           {editEnable ? (
@@ -79,7 +65,10 @@ const Item = ({ luri, suri, id, hendelReload }) => {
             </>
           )}
         </Button>
-        <Button className="delete">
+        <Button
+          className="delete"
+          onClick={() => hendelDelete(id, hendelReload)}
+        >
           <AiOutlineDelete /> delete
         </Button>
       </Buttons>
