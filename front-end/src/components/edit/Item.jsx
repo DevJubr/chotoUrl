@@ -11,11 +11,35 @@ import {
   UrlContainer,
 } from "./EdPageStyled";
 import { useState } from "react";
-const Item = ({ luri, suri }) => {
+import axios from "axios";
+const Item = ({ luri, suri, id, hendelReload }) => {
   const [editEnable, seteditEnable] = useState(false);
-
-  const editHendel = () => {
+  const [editState, seteditState] = useState(luri);
+  const editHendel = (ev) => {
     seteditEnable(!editEnable);
+
+    if (ev.target.name === "save") {
+      const hendelUpdate = async (_id, updatedUrl) => {
+        try {
+          const response = await axios.patch(
+            "http://localhost:8000/api/v1/urlupdate",
+            { _id, updatedUrl },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          if (response.status === 200) {
+            console.log("update successfully");
+          }
+        } catch (error) {
+          console.log("updated error :", error);
+        }
+      };
+      hendelUpdate(id, editState);
+      hendelReload();
+    }
   };
 
   return (
@@ -24,7 +48,11 @@ const Item = ({ luri, suri }) => {
         <UrlContainer>
           <RedDot />
           {editEnable ? (
-            <Input type="text" value={"ongejdhfwugfwu.com"} />
+            <Input
+              type="text"
+              value={editState}
+              onChange={(ev) => seteditState(ev.target.value)}
+            />
           ) : (
             <Url>{luri.slice(0, 24)}...</Url>
           )}
@@ -36,7 +64,11 @@ const Item = ({ luri, suri }) => {
       </Links>
 
       <Buttons>
-        <Button className="edit" onClick={editHendel}>
+        <Button
+          className="edit"
+          onClick={editHendel}
+          name={editEnable ? "save" : "edit"}
+        >
           {editEnable ? (
             <>
               <AiOutlineSave /> save

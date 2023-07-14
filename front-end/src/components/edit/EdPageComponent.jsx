@@ -5,6 +5,7 @@ import Item from "./Item";
 
 const EdPageComponent = () => {
   const [data, setData] = useState(null);
+  const [reloadComponent, setreloadComponent] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +19,11 @@ const EdPageComponent = () => {
     };
 
     fetchData();
-  }, []);
+  }, [reloadComponent]);
+
+  const hendelReload = () => {
+    setreloadComponent(!reloadComponent);
+  };
 
   if (data === null) {
     // Display loading state while waiting for the data
@@ -32,7 +37,15 @@ const EdPageComponent = () => {
 
       <Section>
         {data.map((url) => {
-          return <Item key={url._id} luri={url.longUrl} suri={url.shortUrl} />;
+          return (
+            <Item
+              key={url._id}
+              id={url._id}
+              luri={url.longUrl}
+              suri={url.shortUrl}
+              hendelReload={hendelReload}
+            />
+          );
         })}
       </Section>
     </>
