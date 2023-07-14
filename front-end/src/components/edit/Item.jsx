@@ -11,7 +11,7 @@ import {
   UrlContainer,
 } from "./EdPageStyled";
 import { useState } from "react";
-const Item = () => {
+const Item = ({ luri, suri }) => {
   const [editEnable, seteditEnable] = useState(false);
 
   const editHendel = () => {
@@ -26,12 +26,12 @@ const Item = () => {
           {editEnable ? (
             <Input type="text" value={"ongejdhfwugfwu.com"} />
           ) : (
-            <Url>longejdhfwugfwu.com</Url>
+            <Url>{luri.slice(0, 24)}...</Url>
           )}
         </UrlContainer>
         <UrlContainer>
           <GreenDot />
-          <Url>longejdhfwugfwu.com</Url>
+          <Url>{suri}</Url>
         </UrlContainer>
       </Links>
 
