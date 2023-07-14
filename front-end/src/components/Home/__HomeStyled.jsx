@@ -31,6 +31,7 @@ export const StyledH1 = styled.h1`
 export const StyledError = styled.span`
   color: red;
   opacity: 0.8;
+  margin-top: -1.375rem;
 `;
 export const StyledHeader = styled.header`
   width: 100%;
@@ -108,6 +109,13 @@ export const Button = styled.button`
   text-transform: capitalize;
   letter-spacing: 1px;
   cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  &:hover {
+    box-shadow: inset 8px 8px 14px #17171b, -4px -4px 14px #2f2d35;
+    transition: box-shadow 0.3s;
+  }
   @media only screen and (max-width: 360px) {
     padding: 1rem 1.55rem;
     font-size: 0.8rem;

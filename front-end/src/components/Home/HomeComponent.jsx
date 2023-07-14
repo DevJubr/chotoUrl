@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { IoCheckmarkDoneOutline } from "react-icons/io5";
 import {
   StyledHeader,
   StyledH1,
@@ -13,9 +14,28 @@ import Loader from "../loader/Loader";
 
 const HomeComponent = () => {
   const [url, setUrl] = useState("");
+  const [loader, setloader] = useState(false);
+  const [Iscopyed, setIscopyed] = useState(false);
   const [haveError, setHaveError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { hendelSubmit } = useUrl({ setHaveError, setErrorMessage, url });
+  const { hendelSubmit, Respons, hendelClick } = useUrl({
+    setHaveError,
+    setErrorMessage,
+    url,
+    setUrl,
+    setloader,
+    setIscopyed,
+  });
+
+  useEffect(() => {
+    if (Iscopyed) {
+      const Timer = setTimeout(() => {
+        setIscopyed(false);
+      }, 3000);
+
+      return () => clearTimeout(Timer);
+    }
+  }, [Iscopyed]);
 
   return (
     <div className="Home">
@@ -27,18 +47,37 @@ const HomeComponent = () => {
           <Input
             type="text"
             placeholder="Enter your long URL"
-            value={url}
+            value={
+              Iscopyed
+                ? url
+                : Respons?.shortUrl
+                ? `http://localhost:8000/${Respons?.shortUrl}`
+                : url
+            }
             onChange={(event) => setUrl(event.target.value)}
           />
           {haveError && <StyledError>{errorMessage}</StyledError>}
-          <Button type="submit">
-            {!haveError ? (
+
+          <Button
+            type={Iscopyed ? "button" : "submit"}
+            name={!loader && Respons?.shortUrl ? "copy" : null}
+            onClick={(e) =>
+              hendelClick(e, `http://localhost:8000/${Respons?.shortUrl}`)
+            }
+          >
+            {(Iscopyed ? (
               <>
-                generating <Loader />
+                copyed <IoCheckmarkDoneOutline />
               </>
-            ) : (
-              "Get Short Link "
-            )}
+            ) : null) ||
+              (!loader && Respons?.shortUrl ? "copytocboadr" : null) ||
+              (loader ? (
+                <>
+                  generating <Loader />
+                </>
+              ) : (
+                "Shorten"
+              ))}
           </Button>
         </FormGroup>
       </Form>
