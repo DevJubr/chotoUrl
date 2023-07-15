@@ -6,7 +6,6 @@ const redirectController = require("./controllers/redirectController.js");
 const getAllUrlsController = require("./controllers/getAllUrlsController.js");
 const deleteUrlController = require("./controllers/deleteUrlController.js");
 const updateUrlController = require("./controllers/updateUrlController.js");
-const functions = require("firebase-functions");
 // createing app
 const app = express();
 
@@ -39,5 +38,4 @@ app.listen(PORT, () => {
   console.log(`server listening on PORT ${PORT}`);
 });
 
-// module.exports = app;
-exports.api = functions.https.onRequest(app);
+module.exports = app;
