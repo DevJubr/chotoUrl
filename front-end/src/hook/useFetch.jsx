@@ -3,7 +3,7 @@ const useFetch = () => {
   const fetchData = async (page, limit) => {
     try {
       const response = await axios.get(
-        `api/v1/allurls?page=${page}&limit=${limit}`
+        `/api/v1/allurls?page=${page}&limit=${limit}`
       );
 
       if (!response.status === 200) {
@@ -58,7 +58,7 @@ const useFetch = () => {
   //
   const hendelDelete = async (id, hendelReload) => {
     try {
-      const response = await axios.delete(`api/v1/url/${id}`);
+      const response = await axios.delete(`/api/v1/url/${id}`);
 
       if (response.status === 200) {
         console.log("URL deleted successfully");
