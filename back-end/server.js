@@ -6,6 +6,8 @@ const redirectController = require("./controllers/redirectController.js");
 const getAllUrlsController = require("./controllers/getAllUrlsController.js");
 const deleteUrlController = require("./controllers/deleteUrlController.js");
 const updateUrlController = require("./controllers/updateUrlController.js");
+const allUserHistoryController = require("./controllers/allUserHistoryController.js");
+
 // createing app
 const app = express();
 
@@ -26,6 +28,8 @@ app.patch("/api/v1/urlupdate", updateUrlController);
 app.delete("/api/v1/url/:id", deleteUrlController);
 app.get("/api/v1/allurls", getAllUrlsController);
 app.get("/:url", redirectController);
+app.get("/api/v1/allUserHistory", allUserHistoryController);
+
 app.get("/", (_req, res) => {
   res.send("working fine");
 });
