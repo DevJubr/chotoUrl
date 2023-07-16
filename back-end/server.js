@@ -1,5 +1,4 @@
 const Cors = require("cors");
-// const Path = require("path");
 const dotenv = require("dotenv");
 const express = require("express");
 const dbConnection = require("./utils/databaseConnection.js");
@@ -18,7 +17,7 @@ dotenv.config();
 app.use(express.json());
 app.use(
   Cors({
-    methods: ["GET", "POST", "PATCH", "DELETE"],
+    // methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   })
 );
