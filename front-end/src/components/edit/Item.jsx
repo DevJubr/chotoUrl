@@ -9,9 +9,13 @@ import {
   Url,
   UrlContainer,
 } from "./EdPageStyled";
+
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineSave } from "react-icons/ai";
 import { useState } from "react";
 import useFetch from "../../hook/useFetch";
+
+import { Link } from "react-router-dom";
+
 const Item = ({ luri, suri, id, hendelReload }) => {
   //hooks
   const [editEnable, seteditEnable] = useState(false);
@@ -30,12 +34,20 @@ const Item = ({ luri, suri, id, hendelReload }) => {
               onChange={(ev) => seteditState(ev.target.value)}
             />
           ) : (
-            <Url>{luri.slice(0, 24)}...</Url>
+            <Url>
+              <a target="_blank" href={luri}>
+                {luri.slice(0, 24)}...
+              </a>{" "}
+            </Url>
           )}
         </UrlContainer>
         <UrlContainer>
           <GreenDot />
-          <Url>{suri}</Url>
+          <Url>
+            <a target="_blank" href={suri} o>
+              {suri.slice(0, 24)}...
+            </a>
+          </Url>
         </UrlContainer>
       </Links>
 

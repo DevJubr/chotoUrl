@@ -1,8 +1,10 @@
 import axios from "axios";
 const useFetch = () => {
-  const fetchData = async () => {
+  const fetchData = async (page, limit) => {
     try {
-      const response = await axios.get("http://localhost:8000/api/v1/allurls");
+      const response = await axios.get(
+        `http://localhost:8000/api/v1/allurls?page=${page}&limit=${limit}`
+      );
       const jsonData = response.data;
       return jsonData;
     } catch (error) {

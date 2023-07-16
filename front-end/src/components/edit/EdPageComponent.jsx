@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
-import { StyledH1, StyledHeader } from "../Home/__HomeStyled";
+import { LoaderCon } from "../Home/__HomeStyled";
 import { Section } from "./EdPageStyled";
 import Item from "./Item";
-import Loader from "../loader/Loader";
 import useFetch from "../../hook/useFetch";
+import SmallHeader from "../smallHeader/SmallHeader";
 
 const EdPageComponent = () => {
   const [data, setData] = useState(null);
+  const [currentPage, setcurrentPage] = useState(1);
+  const [currentLi, setcurrentLi] = useState(1);
   const [reloadComponent, setreloadComponent] = useState(false);
   const { fetchData } = useFetch();
 
-  //
+  // Database update and rerender
   useEffect(() => {
-    const data = fetchData();
+    const data = fetchData(currentPage, 4);
     data
       .then((result) => {
         setData(result);
@@ -20,31 +22,26 @@ const EdPageComponent = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [reloadComponent]);
+  }, [reloadComponent, currentPage]);
 
-  //
+  // chenge reaload state
   const hendelReload = () => {
     setreloadComponent(!reloadComponent);
   };
 
-  //
-  if (data === null) {
-    return (
-      <>
-        <Loader />
-        Loading...
-      </>
-    );
+  // loading component
+  if (data === null || !data?.urls) {
+    return <LoaderCon>Loading...</LoaderCon>;
   }
-
+  function muVal() {
+    return;
+  }
   return (
     <>
-      <StyledHeader>
-        <StyledH1>Manage Your Short URLs.</StyledH1>
-      </StyledHeader>
+      <SmallHeader title={" Manage Your Short URLs."} />
 
       <Section>
-        {data.map((url) => {
+        {data?.urls?.map((url) => {
           return (
             <Item
               key={url._id}
@@ -56,6 +53,24 @@ const EdPageComponent = () => {
           );
         })}
       </Section>
+      <div className="btttnss">
+        <button onClick={() => setcurrentPage(currentPage - 1)}>left</button>
+        <ul>
+          <li className={1 === currentPage ? "active" : null} value={"1"}>
+            1
+          </li>
+          <li className={2 === currentPage ? "active" : null} value={"2"}>
+            2
+          </li>
+          <li className={3 === currentPage ? "active" : null} value={"3"}>
+            3
+          </li>
+          <li className={4 === currentPage ? "active" : null} value={"4"}>
+            4
+          </li>
+        </ul>
+        <button onClick={() => setcurrentPage(currentPage + 1)}>rite</button>
+      </div>
     </>
   );
 };

@@ -39,6 +39,11 @@ export const GreenDot = styled(Dot)`
 
 export const Url = styled.p`
   color: white;
+  a {
+    &:hover {
+      border-bottom: 0.2px solid #dddddd5c;
+    }
+  }
 `;
 
 export const UrlContainer = styled.div`
@@ -70,7 +75,7 @@ export const Button = styled.button`
 export const Section = styled.section`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 3rem;
   margin: 4rem 0;

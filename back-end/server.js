@@ -6,7 +6,6 @@ const redirectController = require("./controllers/redirectController.js");
 const getAllUrlsController = require("./controllers/getAllUrlsController.js");
 const deleteUrlController = require("./controllers/deleteUrlController.js");
 const updateUrlController = require("./controllers/updateUrlController.js");
-const Url = require("./models/Url.js");
 // createing app
 const app = express();
 
@@ -25,11 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/api/v1/url", urlController);
 app.patch("/api/v1/urlupdate", updateUrlController);
 app.delete("/api/v1/url/:id", deleteUrlController);
-app.get("/api/v1/allurls", async (req, res) => {
-  const allUrls = await Url.find({});
-  if (!allUrls) res.status(404).json({ message: "db empty" });
-  return res.status(200).json(allUrls);
-});
+app.get("/api/v1/allurls", getAllUrlsController);
 app.get("/:url", redirectController);
 app.get("/", (_req, res) => {
   res.send("working fine");
@@ -42,5 +37,3 @@ app.listen(PORT, () => {
   dbConnection();
   console.log(`server listening on PORT ${PORT}`);
 });
-
-module.exports = app;

@@ -10,7 +10,7 @@ const urlController = async (req, res) => {
 
   const newEntry = new Url({
     longUrl: url,
-    shortUrl: generate(),
+    shortUrl: `http://localhost:8000/${generate()}`,
     history: [{ createdTime: format(new Date(), "HH:mm:ss - dd/MM/yyyy") }],
   });
   await newEntry.save();

@@ -6,6 +6,13 @@ export const MoreOutter = styled.div`
   background: #27262c;
   box-shadow: 5px 5px 10px #1b1a1e, -5px -5px 10px #33323a;
   margin: 3.3rem 0 0 0;
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media only screen and (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 export const TableOutter = styled.div`
@@ -31,13 +38,22 @@ export const TableOutter = styled.div`
 `;
 
 export const StyledTable = styled.table`
-  width: 80%;
+  width: 100%;
   border-collapse: collapse;
   background: transparent;
-  text-transform: capitalize;
+  text-transform: lowercase;
+  font-size: 0.8rem;
+`;
+
+export const ParentOfTble = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledTh = styled.th`
+  text-transform: capitalize !important;
   text-align: left;
   padding: 1rem;
   position: sticky;
@@ -49,4 +65,11 @@ export const StyledTh = styled.th`
 export const StyledTd = styled.td`
   text-align: left;
   padding: 1rem;
+
+  a {
+    /* transition: all 0.3s; */
+    &:hover {
+      border-bottom: 0.2px solid #dddddd5c;
+    }
+  }
 `;

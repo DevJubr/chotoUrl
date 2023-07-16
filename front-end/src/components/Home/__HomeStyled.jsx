@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledH1 = styled.h1`
   text-align: center;
-  line-height: 90px;
+  line-height: 78px;
   font-size: 4rem;
   background-image: linear-gradient(to right, #dbe2e7 0%, #8e9ca2 100%);
   -webkit-background-clip: text; /* For Safari */
@@ -33,12 +33,25 @@ export const StyledError = styled.span`
   opacity: 0.8;
   margin-top: -1.375rem;
 `;
+
 export const StyledHeader = styled.header`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
+
+export const LoaderCon = styled.div`
+  width: 100%;
+  height: calc(80vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+`;
+
 export const Form = styled.form`
   display: flex;
   align-items: center;
