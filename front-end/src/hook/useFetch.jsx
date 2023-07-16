@@ -65,8 +65,15 @@ const useFetch = () => {
       console.error("An error occurred while deleting the URL", error);
     }
   };
-
+  const PaginationsBtn = (ln) => {
+    const length = [];
+    for (let i = 0; i < ln; i++) {
+      length.push(i);
+    }
+    return length;
+  };
   return {
+    PaginationsBtn,
     fetchData,
     editHendel,
     hendelUpdate,

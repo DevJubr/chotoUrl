@@ -43,7 +43,7 @@ const HistoryComponent = () => {
                 </tr>
               </thead>
               <tbody>
-                {Data?.reverse().map((item) => (
+                {Data?.map((item) => (
                   <tr key={item._id}>
                     <StyledTd>
                       <a target="_blank" href={item?.longUrl}>

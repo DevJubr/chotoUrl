@@ -79,6 +79,16 @@ export const Section = styled.section`
   flex-wrap: wrap;
   gap: 3rem;
   margin: 4rem 0;
+  &.secAtive {
+    width: 100%;
+    height: 450px;
+  }
+  @media only screen and (max-width: 600px) {
+    &.secAtive {
+      width: 100%;
+      height: unset;
+    }
+  }
 `;
 export const Input = styled.input`
   border: none;
@@ -88,4 +98,59 @@ export const Input = styled.input`
   box-shadow: inset 6px 6px 7px #1b1b1f, inset -6px -6px 7px #333139;
   color: aliceblue;
   padding: 0.6rem;
+`;
+export const Btttnss = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 0;
+`;
+
+export const List = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+`;
+
+export const ListItem = styled.li`
+  &.active {
+    border-radius: 50%;
+    background: #27262c;
+    box-shadow: inset -4px -4px 8px #1c1b1f, inset 4px 4px 8px #323139;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    @media only screen and (max-width: 400px) {
+      width: 2.4rem;
+      height: 2.4rem;
+      font-size: 0.8rem;
+    }
+  }
+`;
+
+export const ButtonPagi = styled.button`
+  width: 4rem;
+  height: 4rem;
+  color: var(--text);
+  border-radius: 50%;
+  background: #27262c;
+  box-shadow: inset -8px -8px 15px #1c1b1f, inset 8px 8px 15px #323139;
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  cursor: pointer;
+
+  @media only screen and (max-width: 400px) {
+    width: 3rem;
+    height: 3rem;
+    svg {
+      height: 1rem;
+      width: 1rem;
+    }
+  }
 `;
