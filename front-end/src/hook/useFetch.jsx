@@ -72,12 +72,28 @@ const useFetch = () => {
     }
     return length;
   };
+
+  const getAllHistory = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/api/v1/allUserHistory"
+      );
+      if (!(response.status === 200)) {
+        throw new Error("data not coming from back-end");
+      }
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return {
     PaginationsBtn,
     fetchData,
     editHendel,
     hendelUpdate,
     hendelDelete,
+    getAllHistory,
   };
 };
 

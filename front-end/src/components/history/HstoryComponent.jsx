@@ -12,9 +12,9 @@ import SmallHeader from "../smallHeader/SmallHeader";
 
 const HistoryComponent = () => {
   const [Data, setData] = useState([]);
-  const { fetchData } = useFetch();
+  const { getAllHistory } = useFetch();
   useEffect(() => {
-    const data = fetchData();
+    const data = getAllHistory();
     data
       .then((result) => {
         setData(result);
@@ -24,7 +24,6 @@ const HistoryComponent = () => {
       });
     setData;
   }, []);
-
   return (
     <>
       <SmallHeader
@@ -43,7 +42,7 @@ const HistoryComponent = () => {
                 </tr>
               </thead>
               <tbody>
-                {Data?.map((item) => (
+                {Data?.message?.map((item) => (
                   <tr key={item._id}>
                     <StyledTd>
                       <a target="_blank" href={item?.longUrl}>
