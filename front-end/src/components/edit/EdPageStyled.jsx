@@ -83,7 +83,7 @@ export const Section = styled.section`
     width: 100%;
     height: 450px;
   }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1200px) {
     &.secAtive {
       width: 100%;
       height: unset;

@@ -69,6 +69,7 @@ const EdPageComponent = () => {
             if (item < 5) {
               return (
                 <ListItem
+                  key={Math.ceil(item * 12)}
                   className={item + 1 === currentPage ? "active" : null}
                 >
                   {item + 1}
