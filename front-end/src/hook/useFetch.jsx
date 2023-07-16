@@ -3,7 +3,7 @@ const useFetch = () => {
   const fetchData = async (page, limit) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/v1/allurls?page=${page}&limit=${limit}`
+        `/api/v1/allurls?page=${page}&limit=${limit}`
       );
       const jsonData = response.data;
       return jsonData;
@@ -33,7 +33,7 @@ const useFetch = () => {
     //
     try {
       const response = await axios.patch(
-        "http://localhost:8000/api/v1/urlupdate",
+        "/api/v1/urlupdate",
         { _id, updatedUrl },
         {
           headers: {
@@ -53,9 +53,7 @@ const useFetch = () => {
   //
   const hendelDelete = async (id, hendelReload) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:8000/api/v1/url/${id}`
-      );
+      const response = await axios.delete(`/api/v1/url/${id}`);
 
       if (response.status === 200) {
         console.log("URL deleted successfully");
@@ -75,9 +73,7 @@ const useFetch = () => {
 
   const getAllHistory = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:8000/api/v1/allUserHistory"
-      );
+      const response = await axios.get("/api/v1/allUrlsHistory");
       if (!(response.status === 200)) {
         throw new Error("data not coming from back-end");
       }

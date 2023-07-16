@@ -2,14 +2,12 @@ const mongoose = require("mongoose");
 
 const dbConnection = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://chotourl:chotourl@chotourl.mnlplau.mongodb.net/",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    );
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
+    console.log("connected database");
     mongoose.connection.once("open", () => {
       console.log("MongoDB connected");
     });

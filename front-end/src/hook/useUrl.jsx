@@ -26,7 +26,7 @@ const useUrl = ({
           setUrl("");
         } else {
           const response = await axios.post(
-            "http://localhost:8000/api/v1/url",
+            "/api/v1/url",
             { url },
             {
               headers: {

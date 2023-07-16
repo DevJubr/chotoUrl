@@ -7,7 +7,7 @@ const getAllUrlsController = async (req, res) => {
 
   const page = +parseInt(req.query.page);
   const limit = +parseInt(req.query.limit);
-  console.log(req.query);
+
   const startingPoint = (page - 1) * limit;
   const endingPoint = page * limit;
 

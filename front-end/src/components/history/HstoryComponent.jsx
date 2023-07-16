@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hook/useFetch";
+import { LoaderCon } from "../Home/__HomeStyled";
+
 import {
   MoreOutter,
   TableOutter,
@@ -11,10 +13,14 @@ import {
 import SmallHeader from "../smallHeader/SmallHeader";
 
 const HistoryComponent = () => {
+  // hooks
   const [Data, setData] = useState([]);
   const { getAllHistory } = useFetch();
+
+  // fetch data from database
   useEffect(() => {
     const data = getAllHistory();
+
     data
       .then((result) => {
         setData(result);
@@ -22,8 +28,12 @@ const HistoryComponent = () => {
       .catch((err) => {
         console.error(err);
       });
-    setData;
   }, []);
+
+  // loading component
+  if (!Data?.message) {
+    return <LoaderCon>Loading...</LoaderCon>;
+  }
   return (
     <>
       <SmallHeader

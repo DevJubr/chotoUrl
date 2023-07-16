@@ -13,11 +13,11 @@ const FooterComponent = () => {
             </li>
 
             <li>
-              <Link to={"/manageurls"}>Manage URLs</Link>
+              <Link to={"/v1/manageurls"}>Manage URLs</Link>
             </li>
 
             <li>
-              <Link to={"/history"}>Short URL History</Link>
+              <Link to={"/v1/history"}>Short URL History</Link>
             </li>
           </FooterRight>
         </FooterCon>
