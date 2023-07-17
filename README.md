@@ -19,7 +19,7 @@ This system for shortening URLs is create using MERN Stack. Users can generate t
 1. Clone the repository:
 
 ```bash
-   git clone [https://github.com/your-username/url-shortening-system.git](https://github.com/jubayerjr203/chotoUrl.git)https://github.com/jubayerjr203/chotoUrl.git
+   git clone https://github.com/jubayerjr203/chotoUrl.git
 ```
 
 3. Install dependencies:
