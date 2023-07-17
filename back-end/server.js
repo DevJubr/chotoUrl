@@ -38,10 +38,17 @@ app.get("*", (req, res) => {
   );
 });
 
+dbConnection()
+  .then((result) => {
+    console.log("done");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 //PORT
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
-  dbConnection();
   console.log(`server listening on PORT ${PORT}`);
 });
