@@ -14,8 +14,6 @@ import { AiOutlineDelete, AiOutlineEdit, AiOutlineSave } from "react-icons/ai";
 import { useState } from "react";
 import useFetch from "../../hook/useFetch";
 
-import { Link } from "react-router-dom";
-
 const Item = ({ luri, suri, id, hendelReload }) => {
   //hooks
   const [editEnable, seteditEnable] = useState(false);
@@ -37,7 +35,7 @@ const Item = ({ luri, suri, id, hendelReload }) => {
             <Url>
               <a target="_blank" href={luri}>
                 {luri.slice(0, 24)}...
-              </a>{" "}
+              </a>
             </Url>
           )}
         </UrlContainer>

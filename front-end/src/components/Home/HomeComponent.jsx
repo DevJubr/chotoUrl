@@ -14,11 +14,12 @@ import Loader from "../loader/Loader";
 
 const HomeComponent = () => {
   const [url, setUrl] = useState("");
+
   const [loader, setloader] = useState(false);
   const [Iscopyed, setIscopyed] = useState(false);
   const [haveError, setHaveError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { hendelSubmit, Respons, hendelClick } = useUrl({
+  const { hendelSubmit, Shorturl, hendelClick } = useUrl({
     setHaveError,
     setErrorMessage,
     url,
@@ -26,7 +27,7 @@ const HomeComponent = () => {
     setloader,
     setIscopyed,
   });
-
+  // const [Shorturl, setShortUrl] = useState(Respons?.shortUrl ? Respons?.shortUrl : '');
   useEffect(() => {
     if (Iscopyed) {
       const Timer = setTimeout(() => {
@@ -47,24 +48,22 @@ const HomeComponent = () => {
           <Input
             type="text"
             placeholder="Enter your long URL"
-            value={
-              Iscopyed ? url : Respons?.shortUrl ? `${Respons?.shortUrl}` : url
-            }
+            value={Iscopyed ? url : Shorturl ? Shorturl : url}
             onChange={(event) => setUrl(event.target.value)}
           />
           {haveError && <StyledError>{errorMessage}</StyledError>}
 
           <Button
             type={Iscopyed ? "button" : "submit"}
-            name={!loader && Respons?.shortUrl ? "copy" : null}
-            onClick={(e) => hendelClick(e, `${Respons?.shortUrl}`)}
+            name={!loader && Shorturl ? "copy" : null}
+            onClick={(e) => hendelClick(e, Shorturl)}
           >
             {(Iscopyed ? (
               <>
                 copyed <IoCheckmarkDoneOutline />
               </>
             ) : null) ||
-              (!loader && Respons?.shortUrl ? "copytocboadr" : null) ||
+              (!loader && Shorturl ? "copytocboadr" : null) ||
               (loader ? (
                 <>
                   generating <Loader />
