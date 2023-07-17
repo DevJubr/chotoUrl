@@ -28,7 +28,7 @@ app.post("/api/v1/url", urlController);
 app.patch("/api/v1/urlupdate", updateUrlController);
 app.delete("/api/v1/url/:id", deleteUrlController);
 app.get("/api/v1/allurls", getAllUrlsController);
-// app.get("/:url", redirectController);
+app.get("/:url", redirectController);
 app.get("/api/v1/allUrlsHistory", allUrlsHistoryController);
 
 app.use(express.static(path.join(__dirname, "../front-end/dist")));
