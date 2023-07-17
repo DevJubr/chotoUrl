@@ -95,7 +95,7 @@ export const Input = styled.input`
   outline: none;
   padding: 1.5rem 0 1.5rem 1.5rem;
   width: 70%;
-  text-transform: capitalize;
+  text-transform: lowercase;
   font-size: 1rem;
   letter-spacing: 1px;
   color: white;

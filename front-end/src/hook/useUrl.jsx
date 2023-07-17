@@ -10,9 +10,6 @@ const useUrl = ({
   setIscopyed,
 }) => {
   const [Respons, setRespons] = useState(null);
-  const [Shorturl, setShortUrl] = useState(
-    Respons?.shortUrl ? Respons?.shortUrl : ""
-  );
   return {
     hendelSubmit: async (event) => {
       event.preventDefault();
@@ -59,7 +56,7 @@ const useUrl = ({
         setHaveError(true);
       }
     },
-    Shorturl,
+    Respons,
     hendelClick: async (e, value) => {
       if (e.target.name === "copy") {
         setUrl("");
@@ -68,7 +65,6 @@ const useUrl = ({
       }
       try {
         await navigator.clipboard.writeText(value);
-        setShortUrl("");
       } catch (error) {
         console.error("Error copying to clipboard:", error);
       }
