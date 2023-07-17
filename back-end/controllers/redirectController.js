@@ -6,7 +6,7 @@ const redirectController = async (req, res) => {
     res.status(404).json({ message: "not found urlParams" });
   }
   const urlFromDb = await Url.findOne({
-    shortUrl: `http://localhost:8000/${url}`,
+    shortUrl: `https://chotourl.vercel.app/${url}`,
   });
   if (!urlFromDb) {
     res.status(404).json({ message: "not found url urlFromDb" });

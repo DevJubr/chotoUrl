@@ -5,7 +5,7 @@ const NavBAr = () => {
     <Nav>
       <div className="con">
         <Nav__Con>
-          <span className="logo">chotoLink</span>
+          <span className="logo">chotoUri</span>
         </Nav__Con>
       </div>
     </Nav>

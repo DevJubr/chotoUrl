@@ -10,7 +10,7 @@ const urlController = async (req, res) => {
 
   const newEntry = new Url({
     longUrl: url,
-    shortUrl: `http://localhost:8000/${generate()}`,
+    shortUrl: `https://chotourl.vercel.app/${generate()}`,
     history: [{ createdTime: format(new Date(), "HH:mm:ss - dd/MM/yyyy") }],
   });
   await newEntry.save();
