@@ -48,11 +48,7 @@ const HomeComponent = () => {
             type="text"
             placeholder="Enter your long URL"
             value={
-              Iscopyed
-                ? url
-                : Respons?.shortUrl
-                ? `http://localhost:8000/${Respons?.shortUrl}`
-                : url
+              Iscopyed ? url : Respons?.shortUrl ? `${Respons?.shortUrl}` : url
             }
             onChange={(event) => setUrl(event.target.value)}
           />

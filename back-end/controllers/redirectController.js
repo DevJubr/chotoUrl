@@ -5,7 +5,6 @@ const redirectController = async (req, res) => {
   if (!url) {
     res.status(404).json({ message: "not found urlParams" });
   }
-  console.log(url);
   const urlFromDb = await Url.findOne({
     shortUrl: `http://localhost:8000/${url}`,
   });
