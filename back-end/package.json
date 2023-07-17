@@ -7,7 +7,7 @@
     "server": "nodemon server.js",
     "client": "npm run dev --prefix ../front-end",
     "start": "node server.js",
-    "client-build": "npm run build --prefix ../front-end"
+    "build": "npm run build --prefix ../front-end"
   },
   "keywords": [],
   "author": "",
