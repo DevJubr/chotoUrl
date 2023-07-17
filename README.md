@@ -2,6 +2,8 @@
 
 This system for shortening URLs is create using MERN Stack. Users can generate their shortened URLs, edit the long URLs, and manage their URL history.
 
+### Live : [https://chotourl.vercel.app/](https://chotourl.vercel.app/)
+
 ## Features
 
 - **Entry Page**: This is first page. In this page users can enter a long URL and generate a short URL.
@@ -36,7 +38,7 @@ npm run server
 ```
 3. Access the application in your browser at `http://localhost:3000`.
 
-##Folder Structure:
+## Folder Structure:
 
 ![Folder Structure.png](https://raw.githubusercontent.com/jubayerjr203/chotoUrl/main/Folder%20Structure.png)                                                                            
 
