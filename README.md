@@ -70,6 +70,3 @@ chotoUrl/
 ├── public/
 │   ├── favicon.png
 └── ...
-
-
-
