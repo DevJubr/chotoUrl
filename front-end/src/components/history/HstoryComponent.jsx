@@ -43,7 +43,7 @@ const HistoryComponent = () => {
   if (loader) {
     return <LoaderCon>Loading...</LoaderCon>;
   }
-  if (Data === null) {
+  if (!loader && Data === null) {
     return (
       <Specer>
         <SmallHeader title={" DB is MT."} />
