@@ -70,9 +70,7 @@ const EdPageComponent = () => {
             );
           })}
         </Section>
-      )}
-
-      <Btttnss>
+       <Btttnss>
         <ButtonPagi
           disabled={currentPage === 1}
           onClick={() => setcurrentPage(currentPage - 1)}
@@ -111,6 +109,9 @@ const EdPageComponent = () => {
           <AiOutlineRight />
         </ButtonPagi>
       </Btttnss>
+      )}
+
+     
     </>
   );
 };
