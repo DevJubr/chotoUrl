@@ -9,6 +9,7 @@ import {
   StyledTh,
   StyledTd,
   ParentOfTble,
+  Specer,
 } from "./__styledHistory";
 import SmallHeader from "../smallHeader/SmallHeader";
 
@@ -38,7 +39,11 @@ const HistoryComponent = () => {
     return <LoaderCon>Loading...</LoaderCon>;
   }
   if (!Data?.message) {
-    return <SmallHeader title={" DB is MT."} />;
+    return (
+      <Specer>
+        <SmallHeader title={" DB is MT."} />
+      </Specer>
+    );
   }
 
   return (

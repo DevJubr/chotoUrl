@@ -5,6 +5,7 @@ import Item from "./Item";
 import useFetch from "../../hook/useFetch";
 import SmallHeader from "../smallHeader/SmallHeader";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { Specer } from "../history/__styledHistory";
 
 const EdPageComponent = () => {
   const [loader, setloader] = useState(false);
@@ -37,7 +38,11 @@ const EdPageComponent = () => {
     return <LoaderCon>Loading...</LoaderCon>;
   }
   if (data === null || data?.urls.length === 0) {
-    return <SmallHeader title={"DB is MT."} />;
+    return (
+      <Specer>
+        <SmallHeader title={" DB is MT."} />
+      </Specer>
+    );
   }
 
   return (

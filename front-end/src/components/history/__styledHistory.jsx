@@ -61,6 +61,12 @@ export const StyledTh = styled.th`
   left: 0;
   background: #27262c;
 `;
+export const Specer = styled.div`
+  height: 70vh;
+  display: grid;
+  place-content: center;
+  width: 100%;
+`;
 
 export const StyledTd = styled.td`
   text-align: left;
