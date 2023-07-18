@@ -30,13 +30,16 @@ const EdPageComponent = () => {
   };
 
   // loading component
-  if (data === null || !data?.urls) {
+  if (data === null) {
     return <LoaderCon>Loading...</LoaderCon>;
+  }
+  if (!data?.urls) {
+    return <SmallHeader title={"DB is MT."} />;
   }
 
   return (
     <>
-      <SmallHeader title={" Manage Your Short URLs."} />
+      <SmallHeader title={"Manage Your Short URLs."} />
 
       <Section
         className={
