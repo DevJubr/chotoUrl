@@ -1,9 +1,9 @@
-import HstoryComponent from "../../components/history/HstoryComponent";
+import HistoryComponent from "../../components/history/HstoryComponent";
 
 const HistoryPage = () => {
   return (
     <>
-      <HstoryComponent />
+      <HistoryComponent />
     </>
   );
 };

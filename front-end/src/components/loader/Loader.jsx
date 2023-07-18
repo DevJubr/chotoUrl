@@ -5,7 +5,7 @@ const LoaderContainer = styled.div`
   width: 18px;
   height: 18px;
   border-radius: 10px;
-  margin: 0.75rem 0 0 0;
+  margin: 0.55rem 0 0 0;
 `;
 
 const fadeAnimation = keyframes`

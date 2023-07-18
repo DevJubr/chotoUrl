@@ -26,13 +26,8 @@ const HistoryComponent = () => {
 
     data
       .then((result) => {
-        if (result) {
-          setData(result);
-          setloader(false);
-        } else {
-          setData(null);
-          setloader(false);
-        }
+        setData(result);
+        setloader(false);
       })
       .catch((err) => {
         console.error(err);
@@ -43,55 +38,56 @@ const HistoryComponent = () => {
   if (loader) {
     return <LoaderCon>Loading...</LoaderCon>;
   }
-  if (!loader && Data === null) {
-    return (
-      <Specer>
-        <SmallHeader title={" DB is MT."} />
-      </Specer>
-    );
-  }
 
   return (
     <>
-      <SmallHeader
-        title={"  Explore Your Short URL History and Navigate with Ease."}
-      />
+      {Data?.message?.length === 0 && loader == false ? (
+        <Specer>
+          <SmallHeader title={" DB is MT."} />
+        </Specer>
+      ) : (
+        <>
+          <SmallHeader
+            title={"  Explore Your Short URL History and Navigate with Ease."}
+          />
 
-      <ParentOfTble>
-        <MoreOutter>
-          <TableOutter>
-            <StyledTable>
-              <thead>
-                <tr>
-                  <StyledTh>long url</StyledTh>
-                  <StyledTh>short url</StyledTh>
-                  <StyledTh>created at</StyledTh>
-                </tr>
-              </thead>
-              <tbody>
-                {Data?.message?.map((item) => (
-                  <tr key={item._id}>
-                    <StyledTd>
-                      <a target="_blank" href={item?.longUrl}>
-                        {/Mobi|Android/i.test(navigator.userAgent)
-                          ? item?.longUrl.slice(0, 22)
-                          : item?.longUrl.slice(0, 42)}
-                        ...
-                      </a>
-                    </StyledTd>
-                    <StyledTd>
-                      <a target="_blank" href={item?.shortUrl}>
-                        {item?.shortUrl}
-                      </a>
-                    </StyledTd>
-                    <StyledTd>{item?.history[0]?.createdTime}</StyledTd>
-                  </tr>
-                ))}
-              </tbody>
-            </StyledTable>
-          </TableOutter>
-        </MoreOutter>
-      </ParentOfTble>
+          <ParentOfTble>
+            <MoreOutter>
+              <TableOutter>
+                <StyledTable>
+                  <thead>
+                    <tr>
+                      <StyledTh>long url</StyledTh>
+                      <StyledTh>short url</StyledTh>
+                      <StyledTh>created at</StyledTh>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Data?.message?.map((item) => (
+                      <tr key={item._id}>
+                        <StyledTd>
+                          <a target="_blank" href={item?.longUrl}>
+                            {/Mobi|Android/i.test(navigator.userAgent)
+                              ? item?.longUrl.slice(0, 22)
+                              : item?.longUrl.slice(0, 42)}
+                            ...
+                          </a>
+                        </StyledTd>
+                        <StyledTd>
+                          <a target="_blank" href={item?.shortUrl}>
+                            {item?.shortUrl}
+                          </a>
+                        </StyledTd>
+                        <StyledTd>{item?.history[0]?.createdTime}</StyledTd>
+                      </tr>
+                    ))}
+                  </tbody>
+                </StyledTable>
+              </TableOutter>
+            </MoreOutter>
+          </ParentOfTble>
+        </>
+      )}
     </>
   );
 };

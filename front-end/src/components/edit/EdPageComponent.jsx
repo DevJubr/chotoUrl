@@ -9,7 +9,7 @@ import { Specer } from "../history/__styledHistory";
 
 const EdPageComponent = () => {
   const [loader, setloader] = useState(false);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
   const [reloadComponent, setreloadComponent] = useState(false);
   const { fetchData, PaginationsBtn } = useFetch();
@@ -20,13 +20,12 @@ const EdPageComponent = () => {
     const data = fetchData(currentPage, 6);
     data
       .then((result) => {
-        if (result) {
-          setData(result);
-          setloader(false);
-        } else {
-          setData(null);
+        if (!result) {
+          setData([]);
           setloader(false);
         }
+        setData(result);
+        setloader(false);
       })
       .catch((err) => {
         console.log(err);
@@ -42,38 +41,37 @@ const EdPageComponent = () => {
   if (loader) {
     return <LoaderCon>Loading...</LoaderCon>;
   }
-
-  if (!loader && data === null) {
-    return (
-      <Specer>
-        <SmallHeader title={" DB is MT."} />
-      </Specer>
-    );
-  }
-
+  console.log(data, loader);
   return (
     <>
       <SmallHeader title={"Manage Your Short URLs."} />
 
-      <Section
-        className={
-          PaginationsBtn(data?.totalPage).length === data?.totalPage
-            ? "secAtive"
-            : null
-        }
-      >
-        {data?.urls?.map((url) => {
-          return (
-            <Item
-              key={url._id}
-              id={url._id}
-              luri={url.longUrl}
-              suri={url.shortUrl}
-              hendelReload={hendelReload}
-            />
-          );
-        })}
-      </Section>
+      {data?.urls?.length === 0 && loader == false ? (
+        <Specer>
+          <SmallHeader title={" DB is MT."} />
+        </Specer>
+      ) : (
+        <Section
+          className={
+            PaginationsBtn(data?.totalPage).length === data?.totalPage
+              ? "secAtive"
+              : null
+          }
+        >
+          {data?.urls?.map((url) => {
+            return (
+              <Item
+                key={url._id}
+                id={url._id}
+                luri={url.longUrl}
+                suri={url.shortUrl}
+                hendelReload={hendelReload}
+              />
+            );
+          })}
+        </Section>
+      )}
+
       <Btttnss>
         <ButtonPagi
           disabled={currentPage === 1}
