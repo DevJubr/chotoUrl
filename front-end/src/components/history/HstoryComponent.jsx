@@ -14,16 +14,19 @@ import SmallHeader from "../smallHeader/SmallHeader";
 
 const HistoryComponent = () => {
   // hooks
+  const [loader, setloader] = useState(false);
   const [Data, setData] = useState([]);
   const { getAllHistory } = useFetch();
 
   // fetch data from database
   useEffect(() => {
+    setloader(true);
     const data = getAllHistory();
 
     data
       .then((result) => {
         setData(result);
+        setloader(false);
       })
       .catch((err) => {
         console.error(err);
@@ -31,7 +34,7 @@ const HistoryComponent = () => {
   }, []);
 
   // loading component
-  if (!Data) {
+  if (loader) {
     return <LoaderCon>Loading...</LoaderCon>;
   }
   if (Data?.message.length === 0) {

@@ -7,6 +7,7 @@ import SmallHeader from "../smallHeader/SmallHeader";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 const EdPageComponent = () => {
+  const [loader, setloader] = useState(false);
   const [data, setData] = useState(null);
   const [currentPage, setcurrentPage] = useState(1);
   const [reloadComponent, setreloadComponent] = useState(false);
@@ -14,10 +15,12 @@ const EdPageComponent = () => {
 
   // Database update and rerender
   useEffect(() => {
+    setloader(true);
     const data = fetchData(currentPage, 6);
     data
       .then((result) => {
         setData(result);
+        setloader(false);
       })
       .catch((err) => {
         console.log(err);
@@ -30,10 +33,10 @@ const EdPageComponent = () => {
   };
 
   // loading component
-  if (data === null) {
+  if (loader) {
     return <LoaderCon>Loading...</LoaderCon>;
   }
-  if (data?.urls.length === 0) {
+  if (data === null || data?.urls.length === 0) {
     return <SmallHeader title={"DB is MT."} />;
   }
 
