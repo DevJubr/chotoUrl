@@ -50,7 +50,10 @@ const EdPageComponent = () => {
         <Specer>
           <SmallHeader title={" DB is MT."} />
         </Specer>
-      ) : (
+      ) : ( <>
+      
+      
+ 
         <Section
           className={
             PaginationsBtn(data?.totalPage).length === data?.totalPage
@@ -109,7 +112,7 @@ const EdPageComponent = () => {
           <AiOutlineRight />
         </ButtonPagi>
       </Btttnss>
-      )}
+           </>)}
 
      
     </>
