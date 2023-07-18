@@ -20,8 +20,13 @@ const EdPageComponent = () => {
     const data = fetchData(currentPage, 6);
     data
       .then((result) => {
-        setData(result);
-        setloader(false);
+        if (result) {
+          setData(result);
+          setloader(false);
+        } else {
+          setData(null);
+          setloader(false);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -37,7 +42,7 @@ const EdPageComponent = () => {
   if (loader) {
     return <LoaderCon>Loading...</LoaderCon>;
   }
-  if (data === null && data?.urls.length === 0) {
+  if (data === null) {
     return (
       <Specer>
         <SmallHeader title={" DB is MT."} />
@@ -51,7 +56,7 @@ const EdPageComponent = () => {
 
       <Section
         className={
-          PaginationsBtn(data.totalPage).length === data.totalPage
+          PaginationsBtn(data?.totalPage).length === data?.totalPage
             ? "secAtive"
             : null
         }
@@ -76,7 +81,7 @@ const EdPageComponent = () => {
           <AiOutlineLeft />
         </ButtonPagi>
         <List>
-          {PaginationsBtn(data.totalPage).map((item) => {
+          {PaginationsBtn(data?.totalPage).map((item) => {
             if (item < 5) {
               return (
                 <ListItem
@@ -98,12 +103,6 @@ const EdPageComponent = () => {
                 </>
               );
             }
-
-            return (
-              <ListItem className={item + 1 === currentPage ? "active" : null}>
-                {item + 1}
-              </ListItem>
-            );
           })}
         </List>
         <ButtonPagi

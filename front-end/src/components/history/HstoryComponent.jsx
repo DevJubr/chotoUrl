@@ -26,8 +26,13 @@ const HistoryComponent = () => {
 
     data
       .then((result) => {
-        setData(result);
-        setloader(false);
+        if (result) {
+          setData(result);
+          setloader(false);
+        } else {
+          setData(null);
+          setloader(false);
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -38,7 +43,7 @@ const HistoryComponent = () => {
   if (loader) {
     return <LoaderCon>Loading...</LoaderCon>;
   }
-  if (Data === null && Data?.message.length === 0) {
+  if (Data === null) {
     return (
       <Specer>
         <SmallHeader title={" DB is MT."} />
