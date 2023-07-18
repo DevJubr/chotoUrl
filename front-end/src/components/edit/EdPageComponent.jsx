@@ -51,66 +51,68 @@ const EdPageComponent = () => {
           <SmallHeader title={" DB is MT."} />
         </Specer>
       ) : (
-        <Section
-          className={
-            PaginationsBtn(data?.totalPage).length === data?.totalPage
-              ? "secAtive"
-              : null
-          }
-        >
-          {data?.urls?.map((url) => {
-            return (
-              <Item
-                key={url._id}
-                id={url._id}
-                luri={url.longUrl}
-                suri={url.shortUrl}
-                hendelReload={hendelReload}
-              />
-            );
-          })}
-        </Section>
-      )}
-
-      <Btttnss>
-        <ButtonPagi
-          disabled={currentPage === 1}
-          onClick={() => setcurrentPage(currentPage - 1)}
-        >
-          <AiOutlineLeft />
-        </ButtonPagi>
-        <List>
-          {PaginationsBtn(data?.totalPage).map((item) => {
-            if (item < 5) {
-              return (
-                <ListItem
-                  key={Math.ceil(item * 12)}
-                  className={item + 1 === currentPage ? "active" : null}
-                >
-                  {item + 1}
-                </ListItem>
-              );
-            } else {
-              return (
-                <>
-                  <ListItem
-                    className={item + 1 === currentPage ? "active" : null}
-                  >
-                    {item + 1}
-                  </ListItem>
-                  <p>...</p>
-                </>
-              );
+        <>
+          <Section
+            className={
+              PaginationsBtn(data?.totalPage).length === data?.totalPage
+                ? "secAtive"
+                : null
             }
-          })}
-        </List>
-        <ButtonPagi
-          disabled={currentPage === data.totalPage}
-          onClick={() => setcurrentPage(currentPage + 1)}
-        >
-          <AiOutlineRight />
-        </ButtonPagi>
-      </Btttnss>
+          >
+            {data?.urls?.map((url) => {
+              return (
+                <Item
+                  key={url._id}
+                  id={url._id}
+                  luri={url.longUrl}
+                  suri={url.shortUrl}
+                  hendelReload={hendelReload}
+                />
+              );
+            })}
+          </Section>
+
+          <Btttnss>
+            <ButtonPagi
+              disabled={currentPage === 1}
+              onClick={() => setcurrentPage(currentPage - 1)}
+            >
+              <AiOutlineLeft />
+            </ButtonPagi>
+            <List>
+              {PaginationsBtn(data?.totalPage).map((item) => {
+                if (item < 5) {
+                  return (
+                    <ListItem
+                      key={Math.ceil(item * 12)}
+                      className={item + 1 === currentPage ? "active" : null}
+                    >
+                      {item + 1}
+                    </ListItem>
+                  );
+                } else {
+                  return (
+                    <>
+                      <ListItem
+                        className={item + 1 === currentPage ? "active" : null}
+                      >
+                        {item + 1}
+                      </ListItem>
+                      <p>...</p>
+                    </>
+                  );
+                }
+              })}
+            </List>
+            <ButtonPagi
+              disabled={currentPage === data?.totalPage}
+              onClick={() => setcurrentPage(currentPage + 1)}
+            >
+              <AiOutlineRight />
+            </ButtonPagi>
+          </Btttnss>
+        </>
+      )}
     </>
   );
 };
