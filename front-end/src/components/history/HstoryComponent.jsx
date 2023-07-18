@@ -37,7 +37,7 @@ const HistoryComponent = () => {
   if (loader) {
     return <LoaderCon>Loading...</LoaderCon>;
   }
-  if (Data?.message.length === 0) {
+  if (!Data?.message) {
     return <SmallHeader title={" DB is MT."} />;
   }
 
