@@ -28,6 +28,7 @@ This system for shortening URLs is create using MERN Stack. Users can generate t
 ```bash
 cd front-end
 npm install
+&
 cd back-end
 npm install
 ```
