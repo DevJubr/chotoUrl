@@ -106,7 +106,7 @@ const EdPageComponent = () => {
           })}
         </List>
         <ButtonPagi
-          disabled={currentPage === data.totalPage}
+          disabled={currentPage === data?.totalPage}
           onClick={() => setcurrentPage(currentPage + 1)}
         >
           <AiOutlineRight />
