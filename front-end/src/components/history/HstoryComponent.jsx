@@ -16,7 +16,7 @@ import SmallHeader from "../smallHeader/SmallHeader";
 const HistoryComponent = () => {
   // hooks
   const [loader, setloader] = useState(false);
-  const [Data, setData] = useState([]);
+  const [Data, setData] = useState(null);
   const { getAllHistory } = useFetch();
 
   // fetch data from database
@@ -38,7 +38,7 @@ const HistoryComponent = () => {
   if (loader) {
     return <LoaderCon>Loading...</LoaderCon>;
   }
-  if (!Data?.message) {
+  if (Data === null || !Data?.message) {
     return (
       <Specer>
         <SmallHeader title={" DB is MT."} />

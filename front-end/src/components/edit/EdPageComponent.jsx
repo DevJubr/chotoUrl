@@ -37,7 +37,7 @@ const EdPageComponent = () => {
   if (loader) {
     return <LoaderCon>Loading...</LoaderCon>;
   }
-  if (data === null || data?.urls.length === 0) {
+  if (data === null || !data?.urls) {
     return (
       <Specer>
         <SmallHeader title={" DB is MT."} />
