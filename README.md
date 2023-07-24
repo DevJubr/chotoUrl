@@ -16,9 +16,13 @@ This system for shortening URLs is create using MERN Stack. Users can generate t
 
   ![Edit Page](https://github.com/jubayerjr203/chotoUrl/blob/main/Page%20Photos/editPage.png)
 
+  ---
+
 - **List Page**: Displays the list of created short URLs, allowing users to access the long URLs and the created times of the URL.
 
   ![List Page](https://github.com/jubayerjr203/chotoUrl/blob/main/Page%20Photos/historyPage.png)
+
+  ---
 
 ## Technologies Used
 
