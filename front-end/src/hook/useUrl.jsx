@@ -64,9 +64,7 @@ const useUrl = ({
         setIscopyed(true);
       }
       try {
-        if (value != undefined) {
-          await navigator.clipboard.writeText(value);
-        }
+        await navigator.clipboard.writeText(value);
       } catch (error) {
         console.error("Error copying to clipboard:", error);
       }

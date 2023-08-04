@@ -57,7 +57,11 @@ const HomeComponent = () => {
           <Button
             type={Iscopyed ? "button" : "submit"}
             name={!loader && Respons?.shortUrl ? "copy" : null}
-            onClick={(e) => hendelClick(e, `${Respons?.shortUrl}`)}
+            onClick={
+              Respons?.shortUrl != undefined
+                ? (e) => hendelClick(e, `${Respons?.shortUrl}`)
+                : null
+            }
           >
             {(Iscopyed ? (
               <>
