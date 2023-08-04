@@ -32,6 +32,8 @@ export const StyledError = styled.span`
   color: red;
   opacity: 0.8;
   margin-top: -1.375rem;
+  font-size: large.77rem;
+  text-align: center;
 `;
 
 export const StyledHeader = styled.header`

@@ -52,7 +52,7 @@ const useUrl = ({
       } catch (error) {
         console.log(error);
         setloader(false);
-        setErrorMessage("An error occurred while submitting the form.");
+        setErrorMessage("An error occurred. Please try again.");
         setHaveError(true);
       }
     },

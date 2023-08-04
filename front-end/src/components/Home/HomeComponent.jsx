@@ -37,6 +37,16 @@ const HomeComponent = () => {
     }
   }, [Iscopyed]);
 
+  useEffect(() => {
+    if (errorMessage !== "") {
+      const Timer = setTimeout(() => {
+        setErrorMessage("");
+      }, 1800);
+
+      return () => clearTimeout(Timer);
+    }
+  }, [errorMessage]);
+
   return (
     <div className="Home">
       <StyledHeader>
