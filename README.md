@@ -2,7 +2,7 @@
 
 This system for shortening URLs is create using MERN Stack. Users can generate their shortened URLs, edit the long URLs, and manage their URL history.
 
-### Live : https://chotourl.vercel.app/
+### Live : [https://chotourl.vercel.app/](https://choto-apwg3825e-jubayerjr203.vercel.app/)
 
 ## Features
 
